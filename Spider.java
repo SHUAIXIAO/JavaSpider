@@ -1,4 +1,4 @@
-package ÅÀ³æÏîÄ¿;
+package JavaSpiderOfCarsales;
 
 import java.io.BufferedReader;  
 import java.io.InputStreamReader;  
@@ -10,33 +10,33 @@ import java.util.regex.Pattern;
 
 public class Spider {
 
-	static String SendGet(String url) {     //ÍøÒ³ÄÚÈİ×¥È¡º¯Êı¿ªÊ¼
-        // ¶¨ÒåÒ»¸ö×Ö·û´®ÓÃÀ´´æ´¢ÍøÒ³ÄÚÈİ  
+	static String SendGet(String url) {     //ç½‘é¡µå†…å®¹æŠ“å–å‡½æ•°å¼€å§‹
+        // å®šä¹‰ä¸€ä¸ªå­—ç¬¦ä¸²ç”¨æ¥å­˜å‚¨ç½‘é¡µå†…å®¹  
         String result = "";  
-        // ¶¨ÒåÒ»¸ö»º³å×Ö·ûÊäÈëÁ÷  
+        // å®šä¹‰ä¸€ä¸ªç¼“å†²å­—ç¬¦è¾“å…¥æµ  
         BufferedReader in = null;  
   
         try {  
-            // ½«string×ª³Éurl¶ÔÏó  
-            URL realUrl = new URL(url);   //½«stringÀàĞÍ×ª»»ÎªURL¶ÔÏó
-            // ³õÊ¼»¯Ò»¸öÁ´½Óµ½ÄÇ¸öurlµÄÁ¬½Ó  
+            // å°†stringè½¬æˆurlå¯¹è±¡  
+            URL realUrl = new URL(url);   //å°†stringç±»å‹è½¬æ¢ä¸ºURLå¯¹è±¡
+            // åˆå§‹åŒ–ä¸€ä¸ªé“¾æ¥åˆ°é‚£ä¸ªurlçš„è¿æ¥  
             URLConnection connection = realUrl.openConnection();  
-            // ¿ªÊ¼Êµ¼ÊµÄÁ¬½Ó  
+            // å¼€å§‹å®é™…çš„è¿æ¥  
             connection.connect();  
-            // ³õÊ¼»¯ BufferedReaderÊäÈëÁ÷À´¶ÁÈ¡URLµÄÏìÓ¦  
+            // åˆå§‹åŒ– BufferedReaderè¾“å…¥æµæ¥è¯»å–URLçš„å“åº”  
             in = new BufferedReader(new InputStreamReader(  
                     connection.getInputStream()));  
-            // ÓÃÀ´ÁÙÊ±´æ´¢×¥È¡µ½µÄÃ¿Ò»ĞĞµÄÊı¾İ  
+            // ç”¨æ¥ä¸´æ—¶å­˜å‚¨æŠ“å–åˆ°çš„æ¯ä¸€è¡Œçš„æ•°æ®  
             String line;  
             while ((line = in.readLine()) != null) {  
-                // ±éÀú×¥È¡µ½µÄÃ¿Ò»ĞĞ²¢½«Æä´æ´¢µ½resultÀïÃæ  
+                // éå†æŠ“å–åˆ°çš„æ¯ä¸€è¡Œå¹¶å°†å…¶å­˜å‚¨åˆ°resulté‡Œé¢  
                 result += line;  
             }  
         } catch (Exception e) {  
-            System.out.println("·¢ËÍGETÇëÇó³öÏÖÒì³££¡" + e);  
+            System.out.println("å‘é€GETè¯·æ±‚å‡ºç°å¼‚å¸¸ï¼" + e);  
             e.printStackTrace();  
         }  
-        // Ê¹ÓÃfinallyÀ´¹Ø±ÕÊäÈëÁ÷  
+        // ä½¿ç”¨finallyæ¥å…³é—­è¾“å…¥æµ  
         finally {  
             try {  
                 if (in != null) {  
@@ -48,16 +48,16 @@ public class Spider {
         }  
         return result;  
   
-    }  //ÍøÒ³ÄÚÈİ×¥È¡º¯Êı½áÊø
+    }  //ç½‘é¡µå†…å®¹æŠ“å–å‡½æ•°ç»“æŸ
   
 	
 	static ArrayList<Record> GetRecord(String content) {  
 	
-        // Ô¤¶¨ÒåÒ»¸öArrayListÀ´´æ´¢½á¹û  
+        // é¢„å®šä¹‰ä¸€ä¸ªArrayListæ¥å­˜å‚¨ç»“æœ  
         ArrayList<Record> results = new ArrayList<Record>();  
         
-        // ¶¨ÒåÒ»¸öÑùÊ½Ä£°å£¬´ËÖĞÊ¹ÓÃÕıÔò±í´ïÊ½£¬À¨ºÅÖĞÊÇÒª×¥µÄÄÚÈİ  
-          Pattern UrlPattern = Pattern.compile("\"n_width-max title \">[\r\n ]+<a href=\"(.+?)\" data-csn");//Ìí¼ÓÕıÔò±í´ïÊ½
+        // å®šä¹‰ä¸€ä¸ªæ ·å¼æ¨¡æ¿ï¼Œæ­¤ä¸­ä½¿ç”¨æ­£åˆ™è¡¨è¾¾å¼ï¼Œæ‹¬å·ä¸­æ˜¯è¦æŠ“çš„å†…å®¹  
+          Pattern UrlPattern = Pattern.compile("\"n_width-max title \">[\r\n ]+<a href=\"(.+?)\" data-csn");//æ·»åŠ æ­£åˆ™è¡¨è¾¾å¼
           Pattern TypePattern = Pattern.compile("Body</div>[\r\n ]+<div class=\"feature-text\">(.+?)</div>");
           Pattern MeterPattern = Pattern.compile("Odometer</div>[\r\n ]+<div class=\"feature-text\">(.+?)</div>");
           Pattern TransPattern = Pattern.compile("Transmission</div>[\r\n ]+<div class=\"feature-text\">(.+?)</div>");
@@ -65,7 +65,7 @@ public class Spider {
           Pattern PricePattern = Pattern.compile("<div class=\"price\">(.+?)</div>");
          
         
-        // ¶¨ÒåÒ»¸ömatcherÓÃÀ´×öÆ¥Åä  
+        // å®šä¹‰ä¸€ä¸ªmatcherç”¨æ¥åšåŒ¹é…  
         Matcher UrlMatcher = UrlPattern.matcher(content); 
         Matcher TypeMatcher = TypePattern.matcher(content);  
         Matcher MeterMatcher = MeterPattern.matcher(content);
@@ -81,7 +81,7 @@ public class Spider {
         
         //&& TitleMatcher.find()
         
-       //Æ¥ÅäTitleÊı¾İ
+       //åŒ¹é…Titleæ•°æ®
         	
         	 
         	 //Pattern YearPattern = Pattern.compile("(.+?)");
@@ -100,7 +100,7 @@ public class Spider {
         {
         
         	
-        	//Ìí¼Ó³É¹¦Æ¥ÅäµÄ½á¹û 
+        	//æ·»åŠ æˆåŠŸåŒ¹é…çš„ç»“æœ 
         	 Record RecordTemp = new Record();  
         	 
         	 String Title = UrlMatcher.group(1);
