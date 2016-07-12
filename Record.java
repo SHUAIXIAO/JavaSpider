@@ -1,4 +1,4 @@
-package ÅÀ³æÏîÄ¿;
+package JavaSpiderOfCarsales;
  
 
 public class Record {
