@@ -1,19 +1,19 @@
-package ÅÀ³æÏîÄ¿;
+package JavaSpiderOfCarsales;
 import java.util.ArrayList;  
 
 public class Main {  
   
     public static void main(String[] args) {  
-        // ¶¨Òå¼´½«·ÃÎÊµÄÁ´½Ó  
+        // å®šä¹‰å³å°†è®¿é—®çš„é“¾æ¥  
        int caramount = 48721;
     	
        for (int i = 0; i < caramount ; i= i + 12 ){	
-    		String url = "http://www.carsales.com.au/cars/results?offset="+i+"&q=%28Service%3D%5BCarsales%5D%26%28State%3D%5BVictoria%5D%26Region%3D%5BMelbourne%5D%29%29&area=Stock&vertical=car&sortBy=TopDeal&WT.z_srchsrcx=makemodel";    // ¶¨Òå¼´½«·ÃÎÊµÄÁ´½Ó  ĞèÒª½â¾öÈçºÎÅúÁ¿µ¼Èë
-            // ·ÃÎÊÁ´½Ó²¢»ñÈ¡Ò³ÃæÄÚÈİ  
+    		String url = "http://www.carsales.com.au/cars/results?offset="+i+"&q=%28Service%3D%5BCarsales%5D%26%28State%3D%5BVictoria%5D%26Region%3D%5BMelbourne%5D%29%29&area=Stock&vertical=car&sortBy=TopDeal&WT.z_srchsrcx=makemodel";    // å®šä¹‰å³å°†è®¿é—®çš„é“¾æ¥  éœ€è¦è§£å†³å¦‚ä½•æ‰¹é‡å¯¼å…¥
+            // è®¿é—®é“¾æ¥å¹¶è·å–é¡µé¢å†…å®¹  
             String content = Spider.SendGet(url);  
-         // »ñÈ¡¸ÃÒ³ÃæµÄËùÓĞµÄ¼ÇÂ¼
+         // è·å–è¯¥é¡µé¢çš„æ‰€æœ‰çš„è®°å½•
             ArrayList<Record> myRecord = Spider.GetRecord(content); 
-            // ´òÓ¡½á¹û   
+            // æ‰“å°ç»“æœ   
             System.out.println(myRecord); 
           
            
