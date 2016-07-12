@@ -1,6 +1,6 @@
 # JavaSpider
 
-I'm master student of UniMelb major of information system.
+I'm master student of UniMelb majored information system.
 
 I'm very interst in the car sales data in Melbourne area. So i crated this project for collecting data from Carsales.com.au.
 
